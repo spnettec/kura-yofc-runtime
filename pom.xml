@@ -33,6 +33,11 @@
         <fastjson2.version>2.0.61</fastjson2.version>
         <javacan.version>3.5.0</javacan.version>
         <vertx.version>5.0.12</vertx.version>
+        <!-- digitalpetri: yofc-iot opcuaserver bundle Import-Packages com.digitalpetri.fsm
+             + com.digitalpetri.netty.fsm at runtime (not embedded in its jar). Also shipped
+             by kura-opcua.deb; both ship same filenames so gen_config_ini.sh dedupes. -->
+        <com.digitalpetri.strict-machine.version>1.0.0</com.digitalpetri.strict-machine.version>
+        <com.digitalpetri.channel-fsm.version>1.0.2</com.digitalpetri.channel-fsm.version>
     </properties>
 
     <build>
