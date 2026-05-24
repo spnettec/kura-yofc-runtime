@@ -113,6 +113,12 @@
             <artifactId>netty-channel-fsm</artifactId>
             <version>${com.digitalpetri.channel-fsm.version}</version>
         </dependency>
+        <!-- Repackaged Vert.x SQL clients + Oracle JDBC (was yofc-iot/com.yofc.iot.repack/com.yofc.iot.repack.vertx.db). -->
+        <dependency>
+            <groupId>com.yofc.iot</groupId>
+            <artifactId>yofc-iot-repack-vertx-db</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <profiles>

@@ -54,6 +54,7 @@
     </build>
 
     <modules>
+        <module>bundles</module>
         <module>distrib</module>
     </modules>
 </project>
