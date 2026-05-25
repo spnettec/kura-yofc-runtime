@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2026 YOFC IOT and others
+
+    This program and the accompanying materials are made
+    available under the terms of the Eclipse Public License 2.0
+    which is available at https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Aggregator for kura-yofc-runtime's local target-platform. p2-repo-yofc-runtime-deps
+        wraps non-OSGi (or insufficiently-OSGi-metadata) maven jars (fastjson2, javacan,
+        yofc-only vertx-*) via the reficio plugin into proper P2 OSGi bundles, then
+        install-to-m2.sh copies them into ~/.m2 under the p2.osgi.bundle groupId.
+        kura-yofc-runtime-pde-deps then references these p2.osgi.bundle artifacts so
+        Eclipse PDE / Kura Emulator launches can resolve them.
+    -->
+    <groupId>org.eclipse.kura</groupId>
+    <artifactId>kura-yofc-runtime-target-platform</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>kura-yofc-runtime target platform</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <p2-maven-plugin.version>2.1.0</p2-maven-plugin.version>
+
+        <!-- Versions match kura-yofc-runtime root pom + distrib. -->
+        <fastjson2.version>2.0.61</fastjson2.version>
+        <javacan.version>3.5.0</javacan.version>
+        <vertx.version>5.0.12</vertx.version>
+    </properties>
+
+    <modules>
+        <module>p2-repo-yofc-runtime-deps</module>
+    </modules>
+</project>

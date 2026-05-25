@@ -54,7 +54,9 @@
     </build>
 
     <modules>
+        <module>target-platform</module>
         <module>bundles</module>
+        <module>kura-yofc-runtime-pde-deps</module>
         <module>distrib</module>
     </modules>
 </project>
