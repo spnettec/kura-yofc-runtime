@@ -28,7 +28,7 @@
     <artifactId>yofc-iot-runtime</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>YOFC IOT Runtime</name>
-    <description>Single OSGi bundle embedding all yofc-iot runtime dependencies: fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, uri-template, core-logging, sql clients + JDBC drivers), and digitalpetri state machines.</description>
+    <description>Single OSGi bundle embedding all yofc-iot runtime dependencies: fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, sql clients + JDBC drivers), and digitalpetri state machines.</description>
     <packaging>bundle</packaging>
 
     <dependencies>
@@ -57,11 +57,6 @@
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-core-logging</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
             <artifactId>vertx-http-proxy</artifactId>
             <version>${vertx.version}</version>
         </dependency>
@@ -73,11 +68,6 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-tcp-eventbus-bridge</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-uri-template</artifactId>
             <version>${vertx.version}</version>
         </dependency>
         <dependency>
@@ -151,11 +141,7 @@
                             io.vertx.ext.bridge.*;-noimport:=true,
                             io.vertx.ext.web.*;-noimport:=true,
                             io.vertx.httpproxy.*;-noimport:=true,
-                            io.vertx.uritemplate.*;-noimport:=true,
                             io.vertx.mqtt.*;-noimport:=true,
-                            io.vertx.core.logging.*;-noimport:=true,
-                            io.vertx.core.internal.logging;-noimport:=true,
-                            io.vertx.core.spi.logging;-noimport:=true,
                             io.vertx.sqlclient.*;-noimport:=true,
                             io.vertx.oracleclient.*;-noimport:=true,
                             io.vertx.mysqlclient.*;-noimport:=true,

@@ -62,7 +62,7 @@
                                     <transitive>false</transitive>
                                 </artifact>
 
-                                <!-- yofc-only Vert.x bundles (8). -->
+                                <!-- yofc-only Vert.x bundles (6). -->
                                 <artifact>
                                     <id>io.vertx:vertx-auth-common:${vertx.version}</id>
                                     <source>true</source>
@@ -70,11 +70,6 @@
                                 </artifact>
                                 <artifact>
                                     <id>io.vertx:vertx-bridge-common:${vertx.version}</id>
-                                    <source>true</source>
-                                    <transitive>false</transitive>
-                                </artifact>
-                                <artifact>
-                                    <id>io.vertx:vertx-core-logging:${vertx.version}</id>
                                     <source>true</source>
                                     <transitive>false</transitive>
                                 </artifact>
@@ -90,11 +85,6 @@
                                 </artifact>
                                 <artifact>
                                     <id>io.vertx:vertx-tcp-eventbus-bridge:${vertx.version}</id>
-                                    <source>true</source>
-                                    <transitive>false</transitive>
-                                </artifact>
-                                <artifact>
-                                    <id>io.vertx:vertx-uri-template:${vertx.version}</id>
                                     <source>true</source>
                                     <transitive>false</transitive>
                                 </artifact>
