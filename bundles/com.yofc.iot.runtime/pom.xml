@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2026 YOFC IOT and others
+
+    This program and the accompanying materials are made
+    available under the terms of the Eclipse Public License 2.0
+    which is available at https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+     YOFC IOT
+
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.eclipse.kura</groupId>
+        <artifactId>kura-yofc-runtime.bundles</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.yofc.iot</groupId>
+    <artifactId>yofc-iot-runtime</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>YOFC IOT Runtime</name>
+    <description>Single OSGi bundle embedding all yofc-iot runtime dependencies: fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, uri-template, core-logging, sql clients + JDBC drivers), and digitalpetri state machines.</description>
+    <packaging>bundle</packaging>
+
+    <dependencies>
+        <!-- fastjson2 -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
+        </dependency>
+        <!-- javacan -->
+        <dependency>
+            <groupId>tel.schich</groupId>
+            <artifactId>javacan-core</artifactId>
+            <version>${javacan.version}</version>
+        </dependency>
+        <!-- yofc-only Vert.x bundles -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-auth-common</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-bridge-common</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core-logging</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-http-proxy</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-mqtt</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-tcp-eventbus-bridge</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-uri-template</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <!-- digitalpetri (opcuaserver runtime) -->
+        <dependency>
+            <groupId>com.digitalpetri.fsm</groupId>
+            <artifactId>strict-machine</artifactId>
+            <version>${com.digitalpetri.strict-machine.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.digitalpetri.netty</groupId>
+            <artifactId>netty-channel-fsm</artifactId>
+            <version>${com.digitalpetri.channel-fsm.version}</version>
+        </dependency>
+        <!-- Vert.x SQL clients + Oracle JDBC -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-oracle-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-mysql-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-mssql-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-sql-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-pg-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-sql-client-templates</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>21.5.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>com.yofc.iot.runtime;singleton:=true</Bundle-SymbolicName>
+                        <Embed-Dependency>*;scope=compile|runtime;artifactId=!jsr305|kotlin-stdlib|kotlin-stdlib-common</Embed-Dependency>
+                        <Embed-Transitive>false</Embed-Transitive>
+                        <_exportcontents>
+                            com.alibaba.fastjson2.*;-noimport:=true,
+                            tel.schich.javacan.*;-noimport:=true,
+                            io.vertx.ext.auth.*;-noimport:=true,
+                            io.vertx.ext.bridge.*;-noimport:=true,
+                            io.vertx.ext.web.*;-noimport:=true,
+                            io.vertx.httpproxy.*;-noimport:=true,
+                            io.vertx.uritemplate.*;-noimport:=true,
+                            io.vertx.mqtt.*;-noimport:=true,
+                            io.vertx.core.logging.*;-noimport:=true,
+                            io.vertx.core.internal.logging;-noimport:=true,
+                            io.vertx.core.spi.logging;-noimport:=true,
+                            io.vertx.sqlclient.*;-noimport:=true,
+                            io.vertx.oracleclient.*;-noimport:=true,
+                            io.vertx.mysqlclient.*;-noimport:=true,
+                            io.vertx.mssqlclient.*;-noimport:=true,
+                            io.vertx.pgclient.*;-noimport:=true,
+                            com.digitalpetri.fsm.*;-noimport:=true,
+                            com.digitalpetri.netty.fsm.*;-noimport:=true,
+                            oracle.*;-noimport:=true
+                        </_exportcontents>
+                        <Import-Package>
+                            io.vertx.core,
+                            io.vertx.core.internal,
+                            io.vertx.core.internal.tls,
+                            io.vertx.core.internal.pool,
+                            io.vertx.core.internal.buffer,
+                            io.vertx.core.net,
+                            io.vertx.core.buffer,
+                            io.vertx.core.json,
+                            io.vertx.core.tracing,
+                            io.vertx.core.impl,
+                            io.vertx.core.net.impl,
+                            io.vertx.core.impl.future,
+                            io.vertx.core.internal.net,
+                            org.slf4j;resolution:=optional;version="[1.7,3)",
+                            org.slf4j.helpers;resolution:=optional;version="[1.7,3)",
+                            org.slf4j.spi;resolution:=optional;version="[1.7,3)",
+                            org.apache.log4j;resolution:=optional;version="[1.2,2)",
+                            org.apache.logging.log4j;resolution:=optional;version="[2.8,3)",
+                            org.apache.logging.log4j.message;resolution:=optional;version="[2.8,3)",
+                            org.apache.logging.log4j.spi;resolution:=optional;version="[2.8,3)",
+                            com.datastax.driver.core;resolution:=optional;version="[3.5,4)",
+                            <!-- Android (fastjson2 bytecode references) -->
+                            android.os;resolution:=optional,
+                            dalvik.system;resolution:=optional,
+                            <!-- PostgreSQL SCRAM auth (vertx-pg-client) -->
+                            com.ongres.scram.client;resolution:=optional,
+                            com.ongres.scram.common;resolution:=optional,
+                            com.ongres.scram.common.exception;resolution:=optional,
+                            com.ongres.scram.common.util;resolution:=optional,
+                            <!-- Jackson (transitive, not embedded — excluded) -->
+                            com.fasterxml.jackson.core;resolution:=optional,
+                            com.fasterxml.jackson.core.io;resolution:=optional,
+                            <!-- Kotlin (kotlin-stdlib excluded from embed) -->
+                            kotlin;resolution:=optional,
+                            kotlin.jvm.internal;resolution:=optional,
+                            kotlin.ranges;resolution:=optional,
+                            kotlin.reflect;resolution:=optional,
+                            kotlin.reflect.jvm;resolution:=optional,
+                            kotlin.reflect.jvm.internal;resolution:=optional,
+                            <!-- GraalVM native image -->
+                            org.graalvm.nativeimage;resolution:=optional,
+                            org.graalvm.nativeimage.hosted;resolution:=optional,
+                            <!-- ASM (annotation processor, not runtime) -->
+                            org.objectweb.asm;resolution:=optional,
+                            org.objectweb.asm.util;resolution:=optional,
+                            <!-- Joda-Time (transitive optional) -->
+                            org.joda.time;resolution:=optional,
+                            <!-- JCA (Oracle JDBC driver's JCA support, not needed at runtime) -->
+                            javax.resource;resolution:=optional,
+                            javax.resource.spi;resolution:=optional,
+                            javax.resource.spi.endpoint;resolution:=optional,
+                            javax.resource.spi.security;resolution:=optional,
+                            <!-- GSS/Kerberos (optional JDK auth) -->
+                            com.sun.security.jgss;resolution:=optional,
+                            org.ietf.jgss;resolution:=optional,
+                            <!-- JDK internals / incubator (not always exported) -->
+                            sun.misc;resolution:=optional,
+                            jdk.incubator.vector;resolution:=optional,
+                            jdk.net;resolution:=optional,
+                            <!-- Oracle JDBC internals (optional features) -->
+                            com.oracle.common.base;resolution:=optional,
+                            com.oracle.common.internal;resolution:=optional,
+                            com.oracle.common.internal.net.ipclw.mql;resolution:=optional,
+                            com.oracle.common.io;resolution:=optional,
+                            com.oracle.common.net;resolution:=optional,
+                            com.oracle.net;resolution:=optional,
+                            com.oracle.svm.core.annotate;resolution:=optional,
+                            com.oracle.svm.core.configure;resolution:=optional,
+                            oracle.as.jmx.framework;resolution:=optional,
+                            oracle.core.ojdl;resolution:=optional,
+                            oracle.dms.console;resolution:=optional,
+                            oracle.dms.context;resolution:=optional,
+                            oracle.dms.instrument;resolution:=optional,
+                            oracle.i18n.text;resolution:=optional,
+                            oracle.i18n.text.converter;resolution:=optional,
+                            oracle.security.jps.service.keystore;resolution:=optional,
+                            oracle.security.pki;resolution:=optional,
+                            oracle.simplefan;resolution:=optional,
+                            oracle.ucp.jdbc;resolution:=optional,
+                            oracle.ucp.proxy;resolution:=optional,
+                            oracle.xdb;resolution:=optional,
+                            oracle.xml.util;resolution:=optional,
+                            <!-- Vert.x optional auth/web extensions (not all auth providers embedded) -->
+                            io.vertx.ext.auth.htdigest;resolution:=optional,
+                            io.vertx.ext.auth.jwt;resolution:=optional,
+                            io.vertx.ext.auth.oauth2;resolution:=optional,
+                            io.vertx.ext.auth.otp;resolution:=optional,
+                            io.vertx.ext.auth.otp.hotp;resolution:=optional,
+                            io.vertx.ext.auth.otp.totp;resolution:=optional,
+                            io.vertx.ext.auth.webauthn4j;resolution:=optional,
+                            io.vertx.ext.healthchecks;resolution:=optional,
+                            io.vertx.ext.web.common;resolution:=optional,
+                            io.vertx.ext.web.common.template;resolution:=optional,
+                            <!-- Vert.x codegen (compile-time annotation processing) -->
+                            io.vertx.codegen.annotations;resolution:=optional,
+                            io.vertx.codegen.format;resolution:=optional,
+                            io.vertx.codegen.processor;resolution:=optional,
+                            io.vertx.codegen.processor.type;resolution:=optional,
+                            io.netty.bootstrap;version="[4.1,5)",
+                            io.netty.buffer;version="[4.1,5)",
+                            io.netty.channel;version="[4.1,5)",
+                            io.netty.channel.epoll;version="[4.1,5)";resolution:=optional,
+                            io.netty.channel.group;version="[4.1,5)",
+                            io.netty.channel.kqueue;version="[4.1,5)";resolution:=optional,
+                            io.netty.channel.nio;version="[4.1,5)",
+                            io.netty.channel.socket;version="[4.1,5)",
+                            io.netty.channel.socket.nio;version="[4.1,5)",
+                            io.netty.channel.unix;version="[4.1,5)";resolution:=optional,
+                            io.netty.handler.codec;version="[4.1,5)",
+                            io.netty.handler.codec.compression;version="[4.1,5)",
+                            io.netty.handler.codec.mqtt;resolution:=optional;version="[4.1,5)",
+                            io.netty.handler.codec.dns;version="[4.1,5)",
+                            io.netty.handler.codec.http.multipart;version="[4.1,5)",
+                            io.netty.handler.codec.http;version="[4.1,5)",
+                            io.netty.handler.codec.http.websocketx;version="[4.1,5)",
+                            io.netty.handler.codec.http.websocketx.extensions;version="[4.1,5)",
+                            io.netty.handler.codec.http.cookie;version="[4.1,5)",
+                            io.netty.handler.codec.http.websocketx.extensions.compression;version="[4.1,5)",
+                            io.netty.handler.codec.http2;version="[4.1,5)",
+                            io.netty.handler.logging;version="[4.1,5)",
+                            io.netty.handler.proxy;version="[4.1,5)",
+                            io.netty.handler.ssl;version="[4.1,5)",
+                            io.netty.handler.ssl.util;version="[4.1,5)",
+                            io.netty.handler.stream;version="[4.1,5)",
+                            io.netty.handler.timeout;version="[4.1,5)",
+                            io.netty.resolver;version="[4.1,5)",
+                            io.netty.resolver.dns;version="[4.1,5)",
+                            io.netty.util;version="[4.1,5)",
+                            io.netty.util.collection;version="[4.1,5)",
+                            io.netty.util.concurrent;version="[4.1,5)",
+                            io.netty.util.internal;version="[4.1,5)",
+                            io.netty.util.internal.logging;version="[4.1,5)",
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.heyoulin</groupId>
+                <artifactId>osgi-dp</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -57,6 +57,6 @@
     </build>
 
     <modules>
-        <module>com.yofc.iot.repack.vertx.db</module>
+        <module>com.yofc.iot.runtime</module>
     </modules>
 </project>
