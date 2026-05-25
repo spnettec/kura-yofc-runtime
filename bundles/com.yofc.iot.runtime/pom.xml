@@ -120,7 +120,7 @@
         <!-- Oracle JDBC (cannot be reficio-wrapped — embedded in fat bundle) -->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc17</artifactId>
+            <artifactId>ojdbc11</artifactId>
             <version>${ojdbc.version}</version>
         </dependency>
     </dependencies>
@@ -133,6 +133,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>com.yofc.iot.runtime;singleton:=true</Bundle-SymbolicName>
+                        <_fixupmessages>"invalid signature*";is:=ignore</_fixupmessages>
                         <Embed-Dependency>*;scope=compile|runtime;artifactId=!jsr305|kotlin-stdlib|kotlin-stdlib-common</Embed-Dependency>
                         <Embed-Transitive>false</Embed-Transitive>
                         <_exportcontents>
@@ -235,6 +236,13 @@
                             oracle.ucp.proxy;resolution:=optional,
                             oracle.xdb;resolution:=optional,
                             oracle.xml.util;resolution:=optional,
+                            <!-- ojdbc11 optional: Jakarta JSON support (not needed) -->
+                            !jakarta.json,
+                            !jakarta.json.stream,
+                            <!-- ojdbc11 optional: Kerberos (JDK internal, not exported in OSGi) -->
+                            !sun.security.krb5.internal,
+                            <!-- ojdbc11 optional: WebLogic transaction integration (not needed) -->
+                            !weblogic.transaction,
                             <!-- Vert.x optional auth/web extensions (not all auth providers embedded) -->
                             io.vertx.ext.auth.htdigest;resolution:=optional,
                             io.vertx.ext.auth.jwt;resolution:=optional,

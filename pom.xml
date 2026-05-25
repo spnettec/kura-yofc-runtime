@@ -38,7 +38,7 @@
              by kura-opcua.deb; both ship same filenames so gen_config_ini.sh dedupes. -->
         <com.digitalpetri.strict-machine.version>1.0.0</com.digitalpetri.strict-machine.version>
         <com.digitalpetri.channel-fsm.version>1.0.2</com.digitalpetri.channel-fsm.version>
-        <ojdbc.version>23.26.2.0.0</ojdbc.version>
+        <ojdbc.version>23.4.0.24.05</ojdbc.version>
     </properties>
 
     <build>
