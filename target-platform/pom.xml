@@ -38,6 +38,8 @@
         <fastjson2.version>2.0.61</fastjson2.version>
         <javacan.version>3.5.0</javacan.version>
         <vertx.version>5.0.12</vertx.version>
+        <com.digitalpetri.strict-machine.version>1.0.0</com.digitalpetri.strict-machine.version>
+        <com.digitalpetri.channel-fsm.version>1.0.2</com.digitalpetri.channel-fsm.version>
     </properties>
 
     <modules>

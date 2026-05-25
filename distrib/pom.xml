@@ -46,10 +46,9 @@
         <kura.repo.module>base</kura.repo.module>
 
         <summary>YOFC IOT runtime support libraries for Eclipse Kura</summary>
-        <long.description>Ships com.yofc.iot.runtime — a single fat OSGi bundle embedding fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus), and digitalpetri state machines. yofc-iot .dp packages consume these via OSGi provided scope.</long.description>
+        <long.description>Ships com.yofc.iot.runtime — a fat OSGi bundle embedding fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, sql clients, Oracle JDBC), and digitalpetri state machines. Reficio-wrapped bundles are for IDE/PDE only.</long.description>
     </properties>
 
-    <!-- The single fat bundle: com.yofc.iot.runtime replaces all 13 individual JARs. -->
     <dependencies>
         <dependency>
             <groupId>com.yofc.iot</groupId>

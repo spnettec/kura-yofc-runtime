@@ -28,7 +28,7 @@
     <artifactId>yofc-iot-runtime</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>YOFC IOT Runtime</name>
-    <description>Single OSGi bundle embedding all yofc-iot runtime dependencies: fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, sql clients + JDBC drivers), and digitalpetri state machines.</description>
+    <description>Single OSGi bundle embedding all yofc-iot runtime dependencies: fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, sql clients), and digitalpetri state machines.</description>
     <packaging>bundle</packaging>
 
     <dependencies>
@@ -117,10 +117,11 @@
             <artifactId>vertx-sql-client-templates</artifactId>
             <version>${vertx.version}</version>
         </dependency>
+        <!-- Oracle JDBC (cannot be reficio-wrapped — embedded in fat bundle) -->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc11</artifactId>
-            <version>21.5.0.0</version>
+            <artifactId>ojdbc17</artifactId>
+            <version>${ojdbc.version}</version>
         </dependency>
     </dependencies>
 
@@ -288,17 +289,6 @@
                         </Import-Package>
                     </instructions>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.github.heyoulin</groupId>
-                <artifactId>osgi-dp</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
