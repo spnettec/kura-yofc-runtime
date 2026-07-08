@@ -128,6 +128,14 @@
             <artifactId>ojdbc11</artifactId>
             <version>${ojdbc.version}</version>
         </dependency>
+        <!-- Netty QUIC codec: vertx-core ConnectionBase references
+             QuicChannel at runtime (optional import), needs the class
+             available to avoid NoClassDefFoundError in HTTP proxy. -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-classes-quic</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -157,6 +165,7 @@
                             io.vertx.pgclient.*;-noimport:=true,
                             com.digitalpetri.fsm.*;-noimport:=true,
                             com.digitalpetri.netty.fsm.*;-noimport:=true,
+                            io.netty.handler.codec.quic.*;-noimport:=true,
                             oracle.*;-noimport:=true
                         </_exportcontents>
                         <Import-Package>
