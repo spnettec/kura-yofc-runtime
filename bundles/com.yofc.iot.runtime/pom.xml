@@ -47,11 +47,6 @@
         <!-- yofc-only Vert.x bundles -->
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-auth-common</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
             <artifactId>vertx-eventbus-bridge-common</artifactId>
             <version>${vertx.version}</version>
         </dependency>
@@ -152,7 +147,6 @@
                         <_exportcontents>
                             com.alibaba.fastjson2.*;-noimport:=true,
                             tel.schich.javacan.*;-noimport:=true,
-                            io.vertx.ext.auth.*;-noimport:=true,
                             io.vertx.ext.bridge.*;-noimport:=true,
                             io.vertx.ext.web.*;-noimport:=true,
                             io.vertx.httpproxy.*;-noimport:=true,
@@ -259,6 +253,8 @@
                             <!-- ojdbc11 optional: WebLogic transaction integration (not needed) -->
                             !weblogic.transaction,
                             <!-- Vert.x optional auth/web extensions (not all auth providers embedded) -->
+                            io.vertx.ext.auth;resolution:=optional,
+                            io.vertx.ext.auth.authentication;resolution:=optional,
                             io.vertx.ext.auth.htdigest;resolution:=optional,
                             io.vertx.ext.auth.jwt;resolution:=optional,
                             io.vertx.ext.auth.oauth2;resolution:=optional,
