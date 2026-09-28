@@ -30,6 +30,12 @@
     </description>
 
     <properties>
+
+
+        <!-- m2e/Eclipse compiler level; Tycho CLI ignores this -->
+
+
+        <maven.compiler.release>21</maven.compiler.release>
         <fastjson2.version>2.0.62</fastjson2.version>
         <javacan.version>3.5.2</javacan.version>
         <vertx.version>5.1.4</vertx.version>
