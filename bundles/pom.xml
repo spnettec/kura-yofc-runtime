@@ -46,10 +46,9 @@
                     <extensions>true</extensions>
                 </plugin>
                 <plugin>
-                    <groupId>com.github.heyoulin</groupId>
-                    <artifactId>osgi-dp</artifactId>
+                    <groupId>org.eclipse.kura</groupId>
+                    <artifactId>kura-dp-maven-plugin</artifactId>
                     <version>${osgi-dp-plugin.version}</version>
-                    <extensions>true</extensions>
                 </plugin>
             </plugins>
         </pluginManagement>
