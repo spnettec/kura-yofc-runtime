@@ -29,8 +29,7 @@
     <name>kura-yofc-runtime bundle parent</name>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netty.version>4.2.16.Final</netty.version>
         <maven-bundle-plugin.version>6.0.0</maven-bundle-plugin.version>

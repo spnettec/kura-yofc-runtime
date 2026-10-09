@@ -139,7 +139,7 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
-                    <instructions>
+                    <instructions combine.self="override">
                         <Bundle-SymbolicName>com.yofc.iot.runtime;singleton:=true</Bundle-SymbolicName>
                         <_fixupmessages>"invalid signature*";is:=ignore</_fixupmessages>
                         <Embed-Dependency>*;scope=compile|runtime;artifactId=!jsr305|kotlin-stdlib|kotlin-stdlib-common</Embed-Dependency>
@@ -193,8 +193,8 @@
                             com.ongres.scram.common.exception;resolution:=optional,
                             com.ongres.scram.common.util;resolution:=optional,
                             <!-- Jackson (transitive, not embedded — excluded) -->
-                            com.fasterxml.jackson.core;resolution:=optional,
-                            com.fasterxml.jackson.core.io;resolution:=optional,
+                            com.fasterxml.jackson.core;resolution:=optional;version="[2.21,3)",
+                            com.fasterxml.jackson.core.io;resolution:=optional;version="[2.21,3)",
                             <!-- Kotlin (kotlin-stdlib excluded from embed) -->
                             kotlin;resolution:=optional,
                             kotlin.jvm.internal;resolution:=optional,
