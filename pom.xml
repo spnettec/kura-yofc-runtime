@@ -13,17 +13,14 @@
      YOFC IOT
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.kura</groupId>
         <artifactId>kura-build-parent</artifactId>
         <version>6.0.0-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath />
     </parent>
-
     <groupId>org.eclipse.kura</groupId>
     <artifactId>kura-yofc-runtime</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -34,13 +31,8 @@
         javacan, vertx-*) that yofc-iot bundles consume with provided scope.
         Drops jars at /opt/eclipse/kura/siblings/yofc-runtime/6/.
     </description>
-
     <properties>
-
-
         <!-- Build and development runtime use JDK 21. -->
-
-
         <maven.compiler.release>21</maven.compiler.release>
         <fastjson2.version>2.0.62</fastjson2.version>
         <javacan.version>3.5.2</javacan.version>
@@ -52,7 +44,6 @@
         <com.digitalpetri.channel-fsm.version>1.0.2</com.digitalpetri.channel-fsm.version>
         <ojdbc.version>23.4.0.24.05</ojdbc.version>
     </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -65,10 +56,10 @@
             </plugin>
         </plugins>
     </build>
-
     <modules>
         <module>bundles</module>
         <module>distrib</module>
         <module>dp</module>
     </modules>
 </project>
+

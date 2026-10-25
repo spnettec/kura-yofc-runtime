@@ -13,24 +13,19 @@
      YOFC IOT
 
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.eclipse.kura</groupId>
         <artifactId>kura-yofc-runtime.bundles</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.yofc.iot</groupId>
     <artifactId>yofc-iot-runtime</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>YOFC IOT Runtime</name>
     <description>Single OSGi bundle embedding all yofc-iot runtime dependencies: fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, sql clients), and digitalpetri state machines.</description>
     <packaging>bundle</packaging>
-
     <dependencies>
         <!-- fastjson2 -->
         <dependency>
@@ -132,7 +127,6 @@
             <version>${netty.version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -163,6 +157,7 @@
                             oracle.*;-noimport:=true
                         </_exportcontents>
                         <Import-Package>
+
                             io.vertx.core,
                             io.vertx.core.internal,
                             io.vertx.core.internal.tls,
@@ -184,45 +179,67 @@
                             org.apache.logging.log4j.message;resolution:=optional;version="[2.8,3)",
                             org.apache.logging.log4j.spi;resolution:=optional;version="[2.8,3)",
                             com.datastax.driver.core;resolution:=optional;version="[3.5,4)",
+
                             <!-- Android (fastjson2 bytecode references) -->
+
                             android.os;resolution:=optional,
                             dalvik.system;resolution:=optional,
+
                             <!-- PostgreSQL SCRAM auth (vertx-pg-client) -->
+
                             com.ongres.scram.client;resolution:=optional,
                             com.ongres.scram.common;resolution:=optional,
                             com.ongres.scram.common.exception;resolution:=optional,
                             com.ongres.scram.common.util;resolution:=optional,
+
                             <!-- Jackson (transitive, not embedded — excluded) -->
+
                             com.fasterxml.jackson.core;resolution:=optional;version="[2.21,3)",
                             com.fasterxml.jackson.core.io;resolution:=optional;version="[2.21,3)",
+
                             <!-- Kotlin (kotlin-stdlib excluded from embed) -->
+
                             kotlin;resolution:=optional,
                             kotlin.jvm.internal;resolution:=optional,
                             kotlin.ranges;resolution:=optional,
                             kotlin.reflect;resolution:=optional,
                             kotlin.reflect.jvm;resolution:=optional,
                             kotlin.reflect.jvm.internal;resolution:=optional,
+
                             <!-- GraalVM native image -->
+
                             org.graalvm.nativeimage;resolution:=optional,
                             org.graalvm.nativeimage.hosted;resolution:=optional,
+
                             <!-- ASM (annotation processor, not runtime) -->
+
                             org.objectweb.asm;resolution:=optional,
                             org.objectweb.asm.util;resolution:=optional,
+
                             <!-- Joda-Time (transitive optional) -->
+
                             org.joda.time;resolution:=optional,
+
                             <!-- JCA (Oracle JDBC driver's JCA support, not needed at runtime) -->
+
                             javax.resource;resolution:=optional,
                             javax.resource.spi;resolution:=optional,
                             javax.resource.spi.endpoint;resolution:=optional,
                             javax.resource.spi.security;resolution:=optional,
+
                             <!-- GSS/Kerberos (optional JDK auth) -->
+
                             com.sun.security.jgss;resolution:=optional,
                             org.ietf.jgss;resolution:=optional,
+
                             <!-- JDK internals / incubator (not always exported) -->
+
                             sun.misc;resolution:=optional,
                             jdk.incubator.vector;resolution:=optional,
                             jdk.net;resolution:=optional,
+
                             <!-- Oracle JDBC internals (optional features) -->
+
                             com.oracle.common.base;resolution:=optional,
                             com.oracle.common.internal;resolution:=optional,
                             com.oracle.common.internal.net.ipclw.mql;resolution:=optional,
@@ -245,14 +262,22 @@
                             oracle.ucp.proxy;resolution:=optional,
                             oracle.xdb;resolution:=optional,
                             oracle.xml.util;resolution:=optional,
+
                             <!-- ojdbc11 optional: Jakarta JSON support (not needed) -->
+
                             !jakarta.json,
                             !jakarta.json.stream,
+
                             <!-- ojdbc11 optional: Kerberos (JDK internal, not exported in OSGi) -->
+
                             !sun.security.krb5.internal,
+
                             <!-- ojdbc11 optional: WebLogic transaction integration (not needed) -->
+
                             !weblogic.transaction,
+
                             <!-- Vert.x optional auth/web extensions (not all auth providers embedded) -->
+
                             io.vertx.ext.auth;resolution:=optional,
                             io.vertx.ext.auth.authentication;resolution:=optional,
                             io.vertx.ext.auth.htdigest;resolution:=optional,
@@ -265,7 +290,9 @@
                             io.vertx.ext.healthchecks;resolution:=optional,
                             io.vertx.ext.web.common;resolution:=optional,
                             io.vertx.ext.web.common.template;resolution:=optional,
+
                             <!-- Vert.x codegen (compile-time annotation processing) -->
+
                             io.vertx.codegen.annotations;resolution:=optional,
                             io.vertx.codegen.format;resolution:=optional,
                             io.vertx.codegen.processor;resolution:=optional,
@@ -305,6 +332,7 @@
                             io.netty.util.internal;version="[4.1,5)",
                             io.netty.util.internal.logging;version="[4.1,5)",
                             *
+
                         </Import-Package>
                     </instructions>
                 </configuration>
@@ -312,3 +340,4 @@
         </plugins>
     </build>
 </project>
+

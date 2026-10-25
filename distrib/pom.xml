@@ -13,42 +13,30 @@
      YOFC IOT
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.eclipse.kura</groupId>
         <artifactId>kura-yofc-runtime</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>kura-yofc-runtime.distrib</artifactId>
     <packaging>pom</packaging>
     <name>kura-yofc-runtime.distrib</name>
-
     <organization>
         <name>YOFC IOT</name>
     </organization>
-
     <properties>
         <jdeb-version>1.14</jdeb-version>
         <addon.installation.dir.level6>/opt/eclipse/kura/siblings/yofc-runtime/6</addon.installation.dir.level6>
-
         <!-- All-arch deb: pure-Java jars only. -->
         <deb.architecture>all</deb.architecture>
-
         <package.name>kura-yofc-runtime</package.name>
-
         <kura.repo.distribution>kura-6</kura.repo.distribution>
         <kura.repo.module>base</kura.repo.module>
-
         <summary>YOFC IOT runtime support libraries for Eclipse Kura</summary>
         <long.description>Ships com.yofc.iot.runtime — a fat OSGi bundle embedding fastjson2, javacan, vertx-* (auth, bridge, mqtt, web, http-proxy, tcp-eventbus, sql clients, Oracle JDBC), and digitalpetri state machines. Reficio-wrapped bundles are for IDE/PDE only.</long.description>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.yofc.iot</groupId>
@@ -56,7 +44,6 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
     <profiles>
         <profile>
             <id>debugBuild</id>
@@ -92,7 +79,9 @@
                         <executions>
                             <execution>
                                 <id>enforce-no-snapshots</id>
-                                <goals><goal>enforce</goal></goals>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
                                 <configuration>
                                     <rules>
                                         <requireReleaseVersion>
@@ -108,7 +97,6 @@
             </build>
         </profile>
     </profiles>
-
     <build>
         <plugins>
             <!-- strip "-SNAPSHOT" from project.version -> ${release.version} -->
@@ -119,18 +107,19 @@
                 <executions>
                     <execution>
                         <id>regex-property</id>
-                        <goals><goal>regex-property</goal></goals>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
                         <configuration>
                             <name>release.version</name>
                             <value>${project.version}</value>
                             <regex>-SNAPSHOT</regex>
-                            <replacement></replacement>
+                            <replacement />
                             <failIfNoMatch>false</failIfNoMatch>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
             <!-- short git commit -> ${git.commit.id.abbrev} -->
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
@@ -139,7 +128,9 @@
                 <executions>
                     <execution>
                         <id>get-the-git-infos</id>
-                        <goals><goal>revision</goal></goals>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
                         <phase>initialize</phase>
                     </execution>
                 </executions>
@@ -152,7 +143,6 @@
                     </includeOnlyProperties>
                 </configuration>
             </plugin>
-
             <!-- Stage com.yofc.iot.runtime bundle JAR into target/plugins_6/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -162,7 +152,9 @@
                     <execution>
                         <id>fetch-runtime-libs</id>
                         <phase>generate-sources</phase>
-                        <goals><goal>copy-dependencies</goal></goals>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}/plugins_6</outputDirectory>
                             <excludeTypes>pom</excludeTypes>
@@ -173,7 +165,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.vafer</groupId>
                 <artifactId>jdeb</artifactId>
@@ -182,7 +173,9 @@
                     <execution>
                         <id>generate-deb</id>
                         <phase>package</phase>
-                        <goals><goal>jdeb</goal></goals>
+                        <goals>
+                            <goal>jdeb</goal>
+                        </goals>
                         <configuration>
                             <verbose>true</verbose>
                             <deb>${basedir}/target/deb/${package.name}_${package.version}-${package.revision}_${deb.architecture}.deb</deb>
@@ -233,3 +226,4 @@
         </plugins>
     </build>
 </project>
+

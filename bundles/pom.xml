@@ -13,21 +13,16 @@
      YOFC IOT
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.eclipse.kura</groupId>
         <artifactId>kura-yofc-runtime</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>kura-yofc-runtime.bundles</artifactId>
     <packaging>pom</packaging>
     <name>kura-yofc-runtime bundle parent</name>
-
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,7 +30,6 @@
         <maven-bundle-plugin.version>6.0.0</maven-bundle-plugin.version>
         <osgi-dp-plugin.version>0.5.2</osgi-dp-plugin.version>
     </properties>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -53,8 +47,8 @@
             </plugins>
         </pluginManagement>
     </build>
-
     <modules>
         <module>com.yofc.iot.runtime</module>
     </modules>
 </project>
+
